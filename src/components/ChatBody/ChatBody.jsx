@@ -1,10 +1,17 @@
 import propTypes from 'prop-types';
+import { useEffect, useRef } from 'react';
 import styles from './ChatBody.module.scss';
 import man from '../../images/man.png';
 
 const ChatBody = ({ messages }) => {
+  const mes = useRef();
+
+  useEffect(() => {
+    mes.current.scrollTop = mes.current.scrollHeight;
+  });
+
   return (
-    <div className={styles.chatBody}>
+    <div className={styles.chatBody} ref={mes}>
       <div className="wrapper">
         <ul className={styles.chatBody__messages}>
           {messages.map((message) => {
