@@ -38,6 +38,11 @@ const ChatBody = ({ messages }) => {
 export default ChatBody;
 
 ChatBody.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  messages: propTypes.array.isRequired,
+  messages: propTypes.arrayOf(
+    propTypes.shape({
+      value: propTypes.string.isRequired,
+      sender: propTypes.string.isRequired,
+      date: propTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
